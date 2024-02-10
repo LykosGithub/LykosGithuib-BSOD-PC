@@ -1,0 +1,143 @@
+For analysis of this file, run !analyze -v
+nt!KeBugCheckEx:
+fffff806`737fd6f0 48894c2408      mov     qword ptr [rsp+8],rcx ss:0018:ffffe38a`7e68df80=000000000000003b
+11: kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+SYSTEM_SERVICE_EXCEPTION (3b)
+An exception happened while executing a system service routine.
+Arguments:
+Arg1: 00000000c0000005, Exception code that caused the BugCheck
+Arg2: fffff80673a7d40d, Address of the instruction which caused the BugCheck
+Arg3: ffffe38a7e68e880, Address of the context record for the exception that caused the BugCheck
+Arg4: 0000000000000000, zero.
+
+Debugging Details:
+------------------
+
+
+KEY_VALUES_STRING: 1
+
+    Key  : Analysis.CPU.mSec
+    Value: 2233
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 3115
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 0
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 608
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 19010
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 94
+
+    Key  : Bugcheck.Code.LegacyAPI
+    Value: 0x3b
+
+    Key  : Failure.Bucket
+    Value: AV_nt!MmEnumerateAddressSpaceAndReferenceImages
+
+    Key  : Failure.Hash
+    Value: {3158f380-acfe-21f7-ef14-eca155652c23}
+
+    Key  : WER.OS.Branch
+    Value: vb_release
+
+    Key  : WER.OS.Version
+    Value: 10.0.19041.1
+
+
+BUGCHECK_CODE:  3b
+
+BUGCHECK_P1: c0000005
+
+BUGCHECK_P2: fffff80673a7d40d
+
+BUGCHECK_P3: ffffe38a7e68e880
+
+BUGCHECK_P4: 0
+
+FILE_IN_CAB:  021024-9062-01.dmp
+
+CONTEXT:  ffffe38a7e68e880 -- (.cxr 0xffffe38a7e68e880)
+rax=0000000000400000 rbx=ffff980ee2c0a000 rcx=0000000000400000
+rdx=0000000000000001 rsi=ffffd00a0d7ad8a0 rdi=ffffd00a0fe1c800
+rip=fffff80673a7d40d rsp=ffffe38a7e68f280 rbp=ffffd00a0ab0e080
+ r8=00000000ffffffff  r9=7fffd00a0fe1b6a8 r10=7ffffffffffffffc
+r11=ffffd00a01e30000 r12=0000000000000000 r13=ffff980ee2c0a000
+r14=ffffd00a0ec6d080 r15=0000000000000001
+iopl=0         nv up ei pl nz na po nc
+cs=0010  ss=0018  ds=002b  es=002b  fs=0053  gs=002b             efl=00050206
+nt!MmEnumerateAddressSpaceAndReferenceImages+0x13d:
+fffff806`73a7d40d 488b01          mov     rax,qword ptr [rcx] ds:002b:00000000`00400000=????????????????
+Resetting default scope
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXPNP: 1 (!blackboxpnp)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  SteelSeriesPrism.exe
+
+STACK_TEXT:  
+ffffe38a`7e68f280 fffff806`73a626eb     : 00000000`00000000 00000000`00000000 ffffe38a`7e68f5c0 00000000`00000001 : nt!MmEnumerateAddressSpaceAndReferenceImages+0x13d
+ffffe38a`7e68f310 fffff806`739e8a32     : fffffc9b`876d1af0 fffffcdf`fcbc7b71 ffffd00a`0ec6d001 00000000`00000302 : nt!EtwpEnumerateAddressSpace+0x15f
+ffffe38a`7e68f4c0 fffff806`739f730a     : ffffd00a`0ec6d080 ffffd00a`0ec6d080 00000000`00000001 00000000`00000000 : nt!EtwTraceProcess+0x1be
+ffffe38a`7e68f750 fffff806`73a8d4ea     : ffffd00a`0ab0e4b8 00000000`00000000 ffffe38a`7e68f919 00000000`00000000 : nt!PspExitProcess+0x4e
+ffffe38a`7e68f780 fffff806`73b07838     : ffffd00a`c0000005 fffff806`73640801 00000001`0000000b 00000027`f0ead000 : nt!PspExitThread+0x5b2
+ffffe38a`7e68f880 fffff806`736c874d     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiSchedulerApcTerminate+0x38
+ffffe38a`7e68f8c0 fffff806`73802c60     : 00000000`00000000 ffffe38a`7e68f980 ffffe38a`7e68fac0 00000000`00000000 : nt!KiDeliverApc+0x60d
+ffffe38a`7e68f980 fffff806`738112df     : ffffd00a`0ab0e080 ffffe38a`7e68fb40 00000000`00000000 00000000`00000000 : nt!KiInitiateUserApc+0x70
+ffffe38a`7e68fac0 00007fff`ae12d064     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : nt!KiSystemServiceExit+0x9f
+00000027`f29ff898 00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : 0x00007fff`ae12d064
+
+
+SYMBOL_NAME:  nt!MmEnumerateAddressSpaceAndReferenceImages+13d
+
+MODULE_NAME: nt
+
+IMAGE_VERSION:  10.0.19041.3930
+
+STACK_COMMAND:  .cxr 0xffffe38a7e68e880 ; kb
+
+IMAGE_NAME:  ntkrnlmp.exe
+
+BUCKET_ID_FUNC_OFFSET:  13d
+
+FAILURE_BUCKET_ID:  AV_nt!MmEnumerateAddressSpaceAndReferenceImages
+
+OS_VERSION:  10.0.19041.1
+
+BUILDLAB_STR:  vb_release
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {3158f380-acfe-21f7-ef14-eca155652c23}
+
+Followup:     MachineOwner
+---------
