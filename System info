@@ -40,7 +40,7 @@ Page-File												C:\pagefile.sys
 Kernel-DMA-Protection									Off	
 Virtualization-based-security							Not-enabled	
 Device-Encryption-Support								Elevation-Required-to-View	
-Hyper-V---VM-Monitor-Mode-Extensions					Yes	
+Hyper-V---VM-Monitor-Mode-Extensions			Yes	
 Hyper-V---Second-Level-Address-Translation-Extensions	Yes	
 Hyper-V---Virtualization-Enabled-in-Firmware			Yes	
 Hyper-V---Data-Execution-Protection						Yes	
