@@ -1,44 +1,48 @@
-Item													Value
-OS Name													Microsoft Windows 10 Pro
-Version													10.0.19045 Build 19045
-Other 													OS Description 	Not Available
-OS Manufacturer											Microsoft Corporation
-System Name												[REDACTED]
-System Manufacturer										To Be Filled By O.E.M.
-System Model											B550 PG Velocita
-System Type												x64-based PC
-System SKU												To Be Filled By O.E.M.
-Processor												AMD Ryzen 7 5700X 8-Core Processor, 3401 Mhz, 8 Core(s), 16 Logical Processor(s)
-BIOS Version/Date										American Megatrends International, LLC. L2.62, 1/31/2023
-SMBIOS Version											3.3
-Embedded Controller Version								255.255
-BIOS Mode												UEFI
-BaseBoard Manufacturer									ASRock
-BaseBoard Product										B550 PG Velocita	
-BaseBoard Version							
-Platform Role											Desktop	
-Secure Boot State										Off	
-PCR7 Configuration										Elevation Required to View	
-Windows Directory										C:\WINDOWS	
-System Directory										C:\WINDOWS\system32	
-Boot Device												\Device\HarddiskVolume1	
-Locale													[REDACTED]
-Hardware Abstraction Layer								Version = "10.0.19041.3636"	
-User Name												[REDACTED]
-Time Zone												[REDACTED]
-Installed Physical Memory (RAM)							32.0 GB	
-Total Physical Memory									31.9 GB	
-Available Physical Memory								25.3 GB	
-Total Virtual Memory									36.7 GB	
-Available Virtual Memory								26.7 GB	
-Page File Space											4.75 GB	
-Page File												C:\pagefile.sys	
-Kernel DMA Protection									Off	
-Virtualization-based security							Not enabled	
-Device Encryption Support								Elevation Required to View	
-Hyper-V - VM Monitor Mode Extensions					Yes	
-Hyper-V - Second Level Address Translation Extensions	Yes	
-Hyper-V - Virtualization Enabled in Firmware			Yes	
-Hyper-V - Data Execution Protection						Yes	
+System-Information-report-written-at:-02/10/24-13:34:19
+System-Name:-WADEPC2
+[System-Summary]
 
-Display Adapter 										NVIDIA GeForce RTX 4070
+Item													Value
+OS-Name													Microsoft-Windows-10-Pro
+Version													10.0.19045-Build-19045
+Other OS-Description									Not-Available
+OS-Manufacturer											Microsoft-Corporation
+System-Name												[REDACTED]
+System-Manufacturer										To-Be-Filled-By-O.E.M.
+System-Model											B550-PG-Velocita
+System-Type												x64-based-PC
+System-SKU												To-Be-Filled-By-O.E.M.
+Processor												AMD-Ryzen-7-5700X-8-Core-Processor,-3401-Mhz,-8-Core(s),-16-Logical-Processor(s)
+BIOS-Version/Date										American-Megatrends-International,-LLC.-L2.62,-1/31/2023
+SMBIOS-Version											3.3
+Embedded-Controller-Version								255.255
+BIOS-Mode												UEFI
+BaseBoard-Manufacturer									ASRock
+BaseBoard-Product										B550-PG-Velocita	
+BaseBoard-Version							
+Platform-Role											Desktop	
+Secure-Boot-State										Off	
+PCR7-Configuration										Elevation-Required-to-View	
+Windows-Directory										C:\WINDOWS	
+System-Directory										C:\WINDOWS\system32	
+Boot-Device												\Device\HarddiskVolume1	
+Locale													[REDACTED]
+Hardware-Abstraction-Layer								Version-=-"10.0.19041.3636"	
+User-Name												[REDACTED]
+Time-Zone												[REDACTED]
+Installed-Physical-Memory-(RAM)							32.0-GB	
+Total-Physical-Memory									31.9-GB	
+Available-Physical-Memory								25.3-GB	
+Total-Virtual-Memory									36.7-GB	
+Available-Virtual-Memory								26.7-GB	
+Page-File-Space											4.75-GB	
+Page-File												C:\pagefile.sys	
+Kernel-DMA-Protection									Off	
+Virtualization-based-security							Not-enabled	
+Device-Encryption-Support								Elevation-Required-to-View	
+Hyper-V---VM-Monitor-Mode-Extensions					Yes	
+Hyper-V---Second-Level-Address-Translation-Extensions	Yes	
+Hyper-V---Virtualization-Enabled-in-Firmware			Yes	
+Hyper-V---Data-Execution-Protection						Yes	
+
+Display-Adapter										NVIDIA-GeForce-RTX-4070
