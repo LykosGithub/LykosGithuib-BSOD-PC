@@ -1,0 +1,140 @@
+For analysis of this file, run !analyze -v
+nt!KeBugCheckEx:
+fffff806`7d7fd6f0 48894c2408      mov     qword ptr [rsp+8],rcx ss:0018:fffff88f`62fca010=000000000000004e
+3: kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+PFN_LIST_CORRUPT (4e)
+Typically caused by drivers passing bad memory descriptor lists (ie: calling
+MmUnlockPages twice with the same list, etc).  If a kernel debugger is
+available get the stack trace.
+Arguments:
+Arg1: 0000000000000099, A PTE or PFN is corrupt
+Arg2: 0000000000222291, page frame number
+Arg3: 0000000000000002, current page state
+Arg4: 080002400024d5f3, 0
+
+Debugging Details:
+------------------
+
+
+KEY_VALUES_STRING: 1
+
+    Key  : Analysis.CPU.mSec
+    Value: 2203
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 2732
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 0
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 452
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 2951
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 94
+
+    Key  : Bugcheck.Code.LegacyAPI
+    Value: 0x4e
+
+    Key  : Failure.Bucket
+    Value: 0x4E_99_nt!MiBadShareCount
+
+    Key  : Failure.Hash
+    Value: {60e553e9-e4c5-ed08-9be6-c353e0011003}
+
+    Key  : WER.OS.Branch
+    Value: vb_release
+
+    Key  : WER.OS.Version
+    Value: 10.0.19041.1
+
+
+BUGCHECK_CODE:  4e
+
+BUGCHECK_P1: 99
+
+BUGCHECK_P2: 222291
+
+BUGCHECK_P3: 2
+
+BUGCHECK_P4: 80002400024d5f3
+
+FILE_IN_CAB:  021024-9203-01.dmp
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXPNP: 1 (!blackboxpnp)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  GoogleDriveFS.exe
+
+STACK_TEXT:  
+fffff88f`62fca008 fffff806`7d7f42cf     : 00000000`0000004e 00000000`00000099 00000000`00222291 00000000`00000002 : nt!KeBugCheckEx
+fffff88f`62fca010 fffff806`7d67b146     : ffff8ff0`61c07000 ffffdb00`0666c318 ffff8ff0`61c07ff8 00000000`00000006 : nt!MiBadShareCount+0x5b
+fffff88f`62fca050 fffff806`7d679f4b     : ffffc58a`408ed700 000001ee`00000001 00000000`00000000 86000002`22291843 : nt!MiWsleFree+0x806
+fffff88f`62fca0e0 fffff806`7d74373a     : fffff88f`62fca798 ffffdb00`0666c4e0 ffffdb00`0666c4e0 ffffc58a`408ed700 : nt!MiFreeWsleList+0x1bb
+fffff88f`62fca2b0 fffff806`7d743565     : 00000000`00000000 86000002`2241a847 ffffa980`f7658288 fffff88f`62fca790 : nt!MiEmptyWorkingSetHelper+0x1b6
+fffff88f`62fca310 fffff806`7d6236e6     : 00000000`00000000 fffff88f`62fca730 00000000`00000000 ffffc58a`408ed700 : nt!MiEmptyPte+0x95
+fffff88f`62fca340 fffff806`7d6237fb     : ffffa9d4`00000000 ffffc58a`408ed700 00000000`00000000 fffff88f`62fca730 : nt!MiWalkPageTablesRecursively+0x776
+fffff88f`62fca3e0 fffff806`7d6237fb     : ffffa9d4`00000000 ffffc58a`408ed700 00000000`00000001 fffff88f`62fca740 : nt!MiWalkPageTablesRecursively+0x88b
+fffff88f`62fca480 fffff806`7d6237fb     : ffffa9d4`ea603000 ffffc58a`408ed700 00000000`00000002 fffff88f`62fca750 : nt!MiWalkPageTablesRecursively+0x88b
+fffff88f`62fca520 fffff806`7d6207fb     : fffff806`7d71fbd0 ffffc58a`408ed700 00000000`00000003 fffff88f`62fca760 : nt!MiWalkPageTablesRecursively+0x88b
+fffff88f`62fca5c0 fffff806`7d758fa3     : fffff88f`62fca6e0 00000000`00000000 00000000`00000002 00000000`00000000 : nt!MiWalkPageTables+0x36b
+fffff88f`62fca6c0 fffff806`7d828f0b     : 00000000`00000000 ffffc58a`408ed700 ffffaf01`814a01c0 00000000`00000000 : nt!MiEmptyWorkingSetInitiate+0x107
+fffff88f`62fca890 fffff806`7d61eff7     : 00000000`00000000 fffff88f`62fcaa00 fffff88f`62fcaa00 00000000`00000000 : nt!MiTrimOrAgeWorkingSet+0x209aeb
+fffff88f`62fca980 fffff806`7d6145c0     : fffff806`7e050bc0 fffff88f`62fcaa40 00000000`00001e61 ffffc58a`00000200 : nt!MiProcessWorkingSets+0x227
+fffff88f`62fcaa20 fffff806`7d7b933c     : 00000000`00000002 00000000`00000001 00000000`ffffffff ffffaf01`7c480180 : nt!MiWorkingSetManager+0x110
+fffff88f`62fcaae0 fffff806`7d7078e5     : ffffc58a`2f1bf080 00000000`00000080 fffff806`7d7b9090 00000000`00000000 : nt!KeBalanceSetManager+0x2ac
+fffff88f`62fcabd0 fffff806`7d8064b8     : ffffaf01`7bf92180 ffffc58a`2f1bf080 fffff806`7d707890 00000060`00000010 : nt!PspSystemThreadStartup+0x55
+fffff88f`62fcac20 00000000`00000000     : fffff88f`62fcb000 fffff88f`62fc4000 00000000`00000000 00000000`00000000 : nt!KiStartSystemThread+0x28
+
+
+SYMBOL_NAME:  nt!MiBadShareCount+5b
+
+MODULE_NAME: nt
+
+IMAGE_VERSION:  10.0.19041.3930
+
+STACK_COMMAND:  .cxr; .ecxr ; kb
+
+IMAGE_NAME:  ntkrnlmp.exe
+
+BUCKET_ID_FUNC_OFFSET:  5b
+
+FAILURE_BUCKET_ID:  0x4E_99_nt!MiBadShareCount
+
+OS_VERSION:  10.0.19041.1
+
+BUILDLAB_STR:  vb_release
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {60e553e9-e4c5-ed08-9be6-c353e0011003}
+
+Followup:     MachineOwner
+---------
