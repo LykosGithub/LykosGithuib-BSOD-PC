@@ -1,0 +1,137 @@
+For analysis of this file, run !analyze -v
+nt!KeBugCheckEx:
+fffff801`2bdfd6f0 48894c2408      mov     qword ptr [rsp+8],rcx ss:0018:fffff58b`0652f1c0=000000000000004e
+6: kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+PFN_LIST_CORRUPT (4e)
+Typically caused by drivers passing bad memory descriptor lists (ie: calling
+MmUnlockPages twice with the same list, etc).  If a kernel debugger is
+available get the stack trace.
+Arguments:
+Arg1: 0000000000000099, A PTE or PFN is corrupt
+Arg2: 0000000000813e7e, page frame number
+Arg3: 0000000000000002, current page state
+Arg4: 0e00081000813e7f, 0
+
+Debugging Details:
+------------------
+
+*** WARNING: Check Image - Checksum mismatch - Dump: 0x7a459, File: 0x7a73b - C:\ProgramData\Dbg\sym\ks.sys\9B65512576000\ks.sys
+
+KEY_VALUES_STRING: 1
+
+    Key  : Analysis.CPU.mSec
+    Value: 2000
+
+    Key  : Analysis.Elapsed.mSec
+    Value: 2371
+
+    Key  : Analysis.IO.Other.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Read.Mb
+    Value: 0
+
+    Key  : Analysis.IO.Write.Mb
+    Value: 0
+
+    Key  : Analysis.Init.CPU.mSec
+    Value: 468
+
+    Key  : Analysis.Init.Elapsed.mSec
+    Value: 2627
+
+    Key  : Analysis.Memory.CommitPeak.Mb
+    Value: 100
+
+    Key  : Bugcheck.Code.LegacyAPI
+    Value: 0x4e
+
+    Key  : Failure.Bucket
+    Value: 0x4E_99_nt!MiBadShareCount
+
+    Key  : Failure.Hash
+    Value: {60e553e9-e4c5-ed08-9be6-c353e0011003}
+
+    Key  : WER.OS.Branch
+    Value: vb_release
+
+    Key  : WER.OS.Version
+    Value: 10.0.19041.1
+
+
+BUGCHECK_CODE:  4e
+
+BUGCHECK_P1: 99
+
+BUGCHECK_P2: 813e7e
+
+BUGCHECK_P3: 2
+
+BUGCHECK_P4: e00081000813e7f
+
+FILE_IN_CAB:  021024-8828-01.dmp
+
+BLACKBOXBSD: 1 (!blackboxbsd)
+
+
+BLACKBOXNTFS: 1 (!blackboxntfs)
+
+
+BLACKBOXPNP: 1 (!blackboxpnp)
+
+
+BLACKBOXWINLOGON: 1
+
+CUSTOMER_CRASH_COUNT:  1
+
+PROCESS_NAME:  Discord.exe
+
+STACK_TEXT:  
+fffff58b`0652f1b8 fffff801`2bdf42cf     : 00000000`0000004e 00000000`00000099 00000000`00813e7e 00000000`00000002 : nt!KeBugCheckEx
+fffff58b`0652f1c0 fffff801`2bc7b146     : fffff58b`0652f6c8 fffff801`2bc7a7ce fffff58b`0652f2c8 00000001`00000001 : nt!MiBadShareCount+0x5b
+fffff58b`0652f200 fffff801`2bc79f4b     : ffffe002`f56b7740 00000000`00000001 00000000`00000000 95000008`13e7e001 : nt!MiWsleFree+0x806
+fffff58b`0652f290 fffff801`2bce1075     : fffff58b`0652f560 00000000`00000040 00000000`00000040 95000008`13e7e005 : nt!MiFreeWsleList+0x1bb
+fffff58b`0652f460 fffff801`2bce02ce     : 00000000`00000040 00000000`00000040 00000000`00000000 ffffe002`eabbe220 : nt!MiTrimSharedPageFromViews+0x9d1
+fffff58b`0652f7c0 fffff801`2bd543a7     : fffff58b`0652f890 fffff58b`00000001 ffffffff`00000000 00000000`00000000 : nt!MiTrimSection+0x18e
+fffff58b`0652f870 fffff801`2bcd7d79     : 00000000`00000000 ffffca80`183977a0 ffffca80`183977a0 ffffe002`eabbe2a0 : nt!MiTrimSharedPage+0x13b
+fffff58b`0652f900 fffff801`2bcd74f7     : 00000000`00000000 fffff801`00000000 00000000`ffffffff 00000000`00000000 : nt!MiTradePage+0x789
+fffff58b`0652f9d0 fffff801`2bf6471c     : fffff801`2c650bc0 00000000`0081327e ffffca80`183977a0 fffff801`2c650bc0 : nt!MiClaimPhysicalRun+0xbb
+fffff58b`0652fa70 fffff801`2c2de718     : ffffe002`00000000 fffff801`2c650bc0 ffffe002`f162b9b0 00000000`00000000 : nt!MiScrubNode+0x170
+fffff58b`0652fb00 fffff801`2bcc46b5     : ffffe002`ec1c0040 ffffe002`e1870cb0 ffffe002`e1870cb0 ffffe002`00000000 : nt!MiScrubMemoryWorker+0x28
+fffff58b`0652fb30 fffff801`2bd078e5     : ffffe002`ec1c0040 00000000`00000080 ffffe002`e18cd180 00000000`00000000 : nt!ExpWorkerThread+0x105
+fffff58b`0652fbd0 fffff801`2be064b8     : ffff8d00`a4904180 ffffe002`ec1c0040 fffff801`2bd07890 fffff58b`08b47d20 : nt!PspSystemThreadStartup+0x55
+fffff58b`0652fc20 00000000`00000000     : fffff58b`06530000 fffff58b`06529000 00000000`00000000 00000000`00000000 : nt!KiStartSystemThread+0x28
+
+
+SYMBOL_NAME:  nt!MiBadShareCount+5b
+
+MODULE_NAME: nt
+
+IMAGE_VERSION:  10.0.19041.3930
+
+STACK_COMMAND:  .cxr; .ecxr ; kb
+
+IMAGE_NAME:  ntkrnlmp.exe
+
+BUCKET_ID_FUNC_OFFSET:  5b
+
+FAILURE_BUCKET_ID:  0x4E_99_nt!MiBadShareCount
+
+OS_VERSION:  10.0.19041.1
+
+BUILDLAB_STR:  vb_release
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+FAILURE_ID_HASH:  {60e553e9-e4c5-ed08-9be6-c353e0011003}
+
+Followup:     MachineOwner
+---------
